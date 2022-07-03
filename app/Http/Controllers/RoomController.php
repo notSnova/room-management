@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MeetingRoom;
 
-class RoomtypeController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class RoomtypeController extends Controller
      */
     public function index()
     {
-        return view('roomtype.index');
+        $data = MeetingRoom::all();
+        return view('room.index', ['data' => $data]);
     }
 
     /**
@@ -23,7 +25,7 @@ class RoomtypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('room.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class RoomtypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new MeetingRoom;
+        $data->name = $request->name;
+        $data->details = $request->details;
+        $data->save();
+
+        return redirect('admin/room/create')->with('success', 'Data has been added.');
     }
 
     /**
@@ -45,7 +52,8 @@ class RoomtypeController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = MeetingRoom::find($id);
+        return view('room.show', ['data' => $data]);
     }
 
     /**
@@ -56,7 +64,8 @@ class RoomtypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = MeetingRoom::find($id);
+        return view('room.edit', ['data' => $data]);
     }
 
     /**
@@ -68,7 +77,12 @@ class RoomtypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = MeetingRoom::find($id);
+        $data->name = $request->name;
+        $data->details = $request->details;
+        $data->save();
+
+        return redirect('admin/room/' . $id . '/edit')->with('success', 'Data has been updated.');
     }
 
     /**
@@ -79,6 +93,8 @@ class RoomtypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        MeetingRoom::where('id', $id)->delete();
+
+        return redirect('admin/room/')->with('success', 'Data has been deleted.');
     }
 }

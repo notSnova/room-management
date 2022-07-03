@@ -22,5 +22,6 @@ Route::get('admin', function () {
     return view('dashboard');
 });
 
-// RoomType Routes
-Route::resource('admin/roomtype', RoomtypeController::class);
+// Room Routes
+Route::get('admin/room/{id}/delete', 'RoomController@destroy');
+Route::resource('admin/room', RoomController::class);

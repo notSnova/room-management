@@ -14,7 +14,7 @@ class AddRoomTypeIdToRoomsTable extends Migration
     public function up()
     {
         Schema::table('rooms', function (Blueprint $table) {
-            $table->integer('room_type_id');
+            $table->integer('room_id');
         });
     }
 

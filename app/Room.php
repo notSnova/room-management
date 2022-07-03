@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    function RoomType()
+    function MeetingRoom()
     {
-        return $this->belongsTo(RoomType::class, 'room_type_id');
+        return $this->belongsTo(MeetingRoom::class, 'room_id');
     }
 }
