@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Login
+Route::get('login', 'LoginController@login');
+Route::post('login', 'LoginController@login_check');
+Route::get('logout', 'LoginController@logout');
+
 // Admin Dashboard
 Route::get('admin', function () {
     return view('dashboard');

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MeetingRoom extends Model
+class Login extends Model
 {
     //
 }

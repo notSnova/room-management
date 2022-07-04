@@ -20,7 +20,7 @@
             <p class="text-success">{{session('success')}}</p>
             @endif
             <div class="table-responsive">
-                <form method="POST" action="{{url('admin/roomtype')}}">
+                <form method="POST" action="{{url('admin/room')}}">
                     @csrf
                     <table class="table table-bordered">
                         <tr>

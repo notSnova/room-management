@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MeetingRoom;
+use App\Room;
 
 class RoomController extends Controller
 {
@@ -14,7 +14,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $data = MeetingRoom::all();
+        $data = Room::all();
         return view('room.index', ['data' => $data]);
     }
 
@@ -36,7 +36,7 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new MeetingRoom;
+        $data = new Room;
         $data->name = $request->name;
         $data->details = $request->details;
         $data->save();
@@ -52,7 +52,7 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $data = MeetingRoom::find($id);
+        $data = Room::find($id);
         return view('room.show', ['data' => $data]);
     }
 
@@ -64,7 +64,7 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        $data = MeetingRoom::find($id);
+        $data = Room::find($id);
         return view('room.edit', ['data' => $data]);
     }
 
@@ -77,7 +77,7 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = MeetingRoom::find($id);
+        $data = Room::find($id);
         $data->name = $request->name;
         $data->details = $request->details;
         $data->save();
@@ -93,7 +93,7 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        MeetingRoom::where('id', $id)->delete();
+        Room::where('id', $id)->delete();
 
         return redirect('admin/room/')->with('success', 'Data has been deleted.');
     }
